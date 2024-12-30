@@ -1,0 +1,71 @@
+<%- include('./partials/header') %>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">SEO Results for <%= url %></h1>
+  
+  <div class="text-center mb-3">
+    <h3>SEO Score: <%= seoPercentage %>%</h3>
+    <div class="progress" style="height: 30px;">
+      <div class="progress-bar" role="progressbar" style="width: <%= seoPercentage %>%;" aria-valuenow="<%= seoPercentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  
+  <!-- SEO Results Section -->
+  <div class="row">
+    <!-- Title -->
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-heading"></i> Title</h5>
+          <p><strong>Content:</strong> <%= title %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meta Description -->
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-clipboard-list"></i> Meta Description</h5>
+          <p><strong>Content:</strong> <%= metaDescription %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Analysis -->
+  <h3>Image Analysis <i class="fas fa-image"></i></h3>
+  <ul class="list-group mb-4">
+    <% images.forEach(img => { %>
+      <li class="list-group-item">
+        <strong>Image:</strong> <%= img.src %> | <%= img.alt %>
+      </li>
+    <% }); %>
+  </ul>
+
+  <!-- Broken Links -->
+  <h3>Broken Links <i class="fas fa-link"></i></h3>
+  <% if (brokenLinks.length > 0) { %>
+    <ul class="list-group">
+      <% brokenLinks.forEach(link => { %>
+        <li class="list-group-item text-danger"><%= link %></li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p class="text-success">No broken links found!</p>
+  <% } %>
+
+  <!-- Suggestions -->
+  <h3>Suggestions <i class="fas fa-lightbulb"></i></h3>
+  <% if (suggestions.length > 0) { %>
+    <ul class="list-group">
+      <% suggestions.forEach(suggestion => { %>
+        <li class="list-group-item"><%= suggestion %></li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p class="text-success">Your website meets most SEO standards!</p>
+  <% } %>
+</div>
+
+<%- include('./partials/footer') %>

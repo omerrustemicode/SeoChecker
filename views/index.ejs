@@ -1,0 +1,16 @@
+<%- include('./partials/header') %>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">SEO Analyzer</h1>
+  
+  <form action="/seo" method="get" class="d-flex justify-content-center">
+    <input type="text" name="url" class="form-control w-50" placeholder="Enter website URL" required>
+    <button type="submit" class="btn btn-primary ms-3">Analyze</button>
+  </form>
+
+  <% if (error) { %>
+    <div class="alert alert-danger mt-4 text-center"><%= error %></div>
+  <% } %>
+</div>
+
+<%- include('./partials/footer') %>
